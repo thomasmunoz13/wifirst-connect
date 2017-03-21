@@ -16,9 +16,9 @@ cp $SERVICE_NAME /etc/systemd/system/$SERVICE_NAME
 npm --prefix $TARGET_DIRECTORY install $TARGET_DIRECTORY
 
 echo "Now, execute this command to start the service (for this session only) : "
-
 echo "[sudo] systemctl start wifirst-connect.service"
 
-echo "To enable it (it will start even after a reboot), execute this : "
+echo
 
+echo "To enable it (it will start even after a reboot), execute this : "
 echo "[sudo] systemctl enable wifirst-connect.service"
