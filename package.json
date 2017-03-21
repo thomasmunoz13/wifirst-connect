@@ -1,0 +1,26 @@
+{
+  "name": "wifirst-connect",
+  "version": "1.0.0",
+  "description": "Wifirst automatic reconnection",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasmunoz13/wifirst-connect.git"
+  },
+  "keywords": [
+    "wifirst",
+    "connect"
+  ],
+  "author": "Thomas Munoz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomasmunoz13/wifirst-connect/issues"
+  },
+  "homepage": "https://github.com/thomasmunoz13/wifirst-connect#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  }
+}
