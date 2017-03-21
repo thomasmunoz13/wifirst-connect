@@ -1,0 +1,19 @@
+[Unit]
+Description=Wifirst auto reconnect service
+
+[Service]
+ExecStart=/usr/bin/node /opt/wifirst-connect/src/index.js -c /opt/wifirst-connect/config.json
+
+WorkingDirectory=/opt/wifirst-connect
+
+Restart=always
+
+# Restart service after 1 hour
+RestartSec=3600
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=wifirst-connect
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

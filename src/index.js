@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let wifirst = require('./wifirst');
 let cli = require('./cli');
 let fs = require('fs');
@@ -16,6 +18,10 @@ let loadConfig = function(file){
 
 let main = function () {
     let config = cli();
+
+    if(!config){
+        config = "config.json";
+    }
 
     wifirst.loadConfig(loadConfig(config));
 

@@ -7,9 +7,7 @@ module.exports = function(){
         .parse(process.argv);
 
     if(program.config === 'file'){
-        console.error("No file given, you must give a file");
-        program.help();
-        process.exit(1);
+        program.config = false;
     }
 
     return program.config;
