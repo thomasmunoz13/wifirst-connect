@@ -22,6 +22,7 @@
   "homepage": "https://github.com/thomasmunoz13/wifirst-connect#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
     "request": "^2.81.0"
   }
 }
