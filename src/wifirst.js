@@ -5,6 +5,9 @@ let cookie = request.jar();
 
 let wifirst = {};
 
+let error_url = "https://connect.wifirst.net/login_error";
+let success_url = "https://apps.wifirst.net/?redirected=true";
+
 wifirst.loadConfig = function(config){
     if(!config || !config.login || !config.password){
         console.error("Missing credentials");
@@ -84,14 +87,32 @@ wifirst.validateConnection = function(callback){
                 username : username,
                 password: password,
                 qos_class: 0,
-                success_url: "https://apps.wifirst.net/?redirected=true",
-                error_url: "https://connect.wifirst.net/login_error"
+                success_url: success_url,
+                error_url: error_url
             },
             jar: cookie
         }, (err, httpResponse, body) => {
+            let redirectUrl = httpResponse.toJSON().headers.location;
+
+            if(error_url === redirectUrl.split('?')[0]){
+                wifirst.fixDeviceLimit((err, body) => {
+                    wifirst.validateConnection(callback);
+                });
+                return;
+            }
+
             callback(err, body);
         })
     })
+};
+
+wifirst.fixDeviceLimit = function(callback){
+    request({
+        url: "https://connect.wifirst.net/?ignore_conflicts=true&reason=Device",
+        jar: cookie
+    }, (err, response, body) => {
+        callback(err, body);
+    });
 };
 
 module.exports = wifirst;
