@@ -30,7 +30,6 @@ let main = function () {
             console.log("An error has occurred");
             console.log(err);
         } else {
-            console.log(body);
             console.log("Successfully authenticated !");
         }
     });
