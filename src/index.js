@@ -26,12 +26,14 @@ let main = function () {
     wifirst.loadConfig(loadConfig(config));
 
     wifirst.validateConnection((err, body) => {
-        if (err) {
-            console.log("An error has occurred");
-            console.log(err);
-        } else {
-            console.log("Successfully authenticated !");
-        }
+        wifirst.checkConnectivity((status) => {
+            if(status){
+                console.log("Successfully authenticated !");
+            } else {
+                console.log("An error has occurred");
+                console.log(err);
+            }
+        });
     });
 };
 

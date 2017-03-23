@@ -98,6 +98,7 @@ wifirst.validateConnection = function(callback){
                 wifirst.fixDeviceLimit((err, body) => {
                     wifirst.validateConnection(callback);
                 });
+
                 return;
             }
 
@@ -113,6 +114,12 @@ wifirst.fixDeviceLimit = function(callback){
     }, (err, response, body) => {
         callback(err, body);
     });
+};
+
+wifirst.checkConnectivity = function(callback){
+  request("http://monip.org", (err, response, body) => {
+     callback(response.toJSON().request.uri.hostname === "monip.org");
+  });
 };
 
 module.exports = wifirst;
